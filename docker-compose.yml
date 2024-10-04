@@ -1,0 +1,22 @@
+version: '3'
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/trackingDB
+    container_name: tracking-api
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    container_name: mongo-db
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
