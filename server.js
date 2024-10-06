@@ -4,10 +4,13 @@ const swaggerUi = require('swagger-ui-express');
 const bodyParser = require('body-parser');
 const sequelize = require('./config/database'); // Adjust path if necessary
 const trackingRoutes = require('./routes/tracking'); // New MySQL-based tracking routes
+const cors = require('cors');
+
+
 
 // Initialize the app
 const app = express();
-
+app.use(cors()); // This will allow all origins
 // Body Parser Middleware
 app.use(bodyParser.json());
 
